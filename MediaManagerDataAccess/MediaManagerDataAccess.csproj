@@ -44,14 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataClasses\Image.cs" />
+    <Compile Include="DataClasses\MediaItem.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataClasses\ResultSet.cs" />
-    <Compile Include="DataClasses\Taggable.cs" />
     <Compile Include="DataClasses\SetOverview.cs" />
+    <Compile Include="DataClasses\Taggable.cs" />
     <Compile Include="DataClasses\TagOverview.cs" />
     <Compile Include="DataModel.cs" />
-    <Compile Include="DataClasses\ImageSet.cs" />
+    <Compile Include="DataClasses\MediaSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

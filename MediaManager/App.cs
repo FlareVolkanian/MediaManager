@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageTagII
 {
-    static class Application
+    static class App
     {
         public static Settings AppSettings { get; set; }
         public static string RootDir => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\MediaManager";
@@ -32,6 +32,11 @@ namespace ImageTagII
                 }
             }
             catch (Exception) { }
+        }
+
+        public static void SaveSettings()
+        {
+
         }
     }
 }
