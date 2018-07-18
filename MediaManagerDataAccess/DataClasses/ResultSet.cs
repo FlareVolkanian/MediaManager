@@ -8,7 +8,7 @@ namespace ImageDataModel
 {
     public class ResultSet : List<Taggable>
     {
-        public ResultSet(IEnumerable<Taggable> Images) : base(Images)
+        public ResultSet(IEnumerable<Taggable> Media) : base(Media)
         {
 
         }

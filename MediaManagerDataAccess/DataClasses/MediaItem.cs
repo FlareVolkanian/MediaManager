@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace ImageDataModel
 {
-    public class Image : Taggable
+    public class MediaItem : Taggable
     {
         public string Path { get; internal set; }
-        public bool IsEncrpyted { get; internal set; }
-        public byte[] IV { get; internal set; }
+        public string Creator { get; internal set; }
 
-        public Image(string Path, Guid ID) : base(ID)
+        public MediaItem(string Path, Guid ID) : base(ID)
         {
             this.Path = Path;
             this.ID = ID;
         }
 
-        public Image(string Path) : this()
+        public MediaItem(string Path) : this()
         {
             this.Path = Path;
         }
 
-        public Image() : base(Guid.NewGuid())
+        public MediaItem() : base(Guid.NewGuid())
         {
             
         }

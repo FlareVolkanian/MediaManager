@@ -29,35 +29,35 @@ namespace ImageDataModel
             Model = Newtonsoft.Json.JsonConvert.DeserializeObject<DataModel>(content);
         }
 
-        public ImageSet AddImageSet(string SetName)
+        public MediaSet AddMediaSet(string SetName)
         {
-            ResultSet sets = GetAllImageSets();
-            if (!sets.Exists(s => (s as ImageSet).SetName == SetName))
+            ResultSet sets = GetAllMediaSets();
+            if (!sets.Exists(s => (s as MediaSet).SetName == SetName))
             {
                 Guid setID = GetGuid();
-                ImageSet set = new ImageSet(setID, SetName);
+                MediaSet set = new MediaSet(setID, SetName);
                 Model.Taggables.Add(setID, set);
                 return set;
             }
             return null;
         }
 
-        public bool AddImageToSet(string SetName, Guid ImageID)
+        public bool AddMediaItemToSet(string SetName, Guid ImageID)
         {
-            ResultSet sets = GetAllImageSets();
-            if(sets.Exists(s => (s as ImageSet).SetName == SetName))
+            ResultSet sets = GetAllMediaSets();
+            if(sets.Exists(s => (s as MediaSet).SetName == SetName))
             {
-                ImageSet set = sets.Find(s => (s as ImageSet).SetName == SetName) as ImageSet;
+                MediaSet set = sets.Find(s => (s as MediaSet).SetName == SetName) as MediaSet;
                 set.ImageIDS.Add(ImageID);
                 return true;
             }
             return false;
         }
 
-        public Image AddImage(string Path)
+        public MediaItem AddMediaItem(string Path)
         {
             Guid imageID = GetGuid();
-            Image image = new Image(Path, imageID);
+            MediaItem image = new MediaItem(Path, imageID);
             Model.Taggables.Add(imageID, image);
             return image;
         }
@@ -79,26 +79,26 @@ namespace ImageDataModel
             return new ResultSet(Model.Taggables.Select(kvp => kvp.Value));
         }
 
-        public ResultSet GetAllImages()
+        public ResultSet GetAllMediaItems()
         {
-            return new ResultSet(Model.Taggables.Select(kvp => kvp.Value).ToList().FindAll(t => t is Image));
+            return new ResultSet(Model.Taggables.Select(kvp => kvp.Value).ToList().FindAll(t => t is MediaItem));
         }
 
-        public ResultSet GetAllImageSets()
+        public ResultSet GetAllMediaSets()
         {
-            return new ResultSet(Model.Taggables.Select(kvp => kvp.Value).ToList().FindAll(t => t is ImageSet));
+            return new ResultSet(Model.Taggables.Select(kvp => kvp.Value).ToList().FindAll(t => t is MediaSet));
         }
 
-        public ResultSet RunQuery(string Query)
+        /*public ResultSet RunQuery(string Query)
         {
 
-        }
+        }*/
 
-        public ResultSet GetImagesForSet(Guid SetID)
+        public ResultSet GetMediaItemsForSet(Guid SetID)
         {
             if(Model.Taggables.ContainsKey(SetID))
             {
-                ImageSet set = Model.Taggables[SetID] as ImageSet;
+                MediaSet set = Model.Taggables[SetID] as MediaSet;
                 if(set != null)
                 {
                     ResultSet results = new ResultSet();
